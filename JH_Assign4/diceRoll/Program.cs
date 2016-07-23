@@ -8,7 +8,7 @@ using System.Threading.Tasks;
     Janelle Heron
     300839820   
     Date Created: July 12 2016
-    Version 2: Created new Reop due to github sync error
+    Version 3: formatted  syntax
 
     Dice Roll Simulation 
 */
@@ -28,9 +28,9 @@ namespace diceRoll
             int[] count = new int[11];
             Random rnd = new Random();
 
-            int diceA, diceB;
+            int diceA, diceB; //created dice
 
-            int total;
+            int total; //intialized total variable
 
             for (int i = 0; i < 36000; i++)
             {
