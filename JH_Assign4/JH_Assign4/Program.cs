@@ -25,12 +25,12 @@ namespace JH_Assign4
         static void Main(string[] args)
         {
             // random number generator, added feature, to auto assign user's seat. 
-            Random rand = new Random(); //Since some airlines, dont let people choose their own seats
+            Random seatPicker = new Random(); //Since some airlines, dont let people choose their own seats
             bool[] seats = new bool[10]; //seats is a bool (true or false)
 
             //To keep a separate list of seats taken         
-            List<int> firstSeatsBooked = new List<int>(); //first class seats assigned to user
-            List<int> economySeatsBooked = new List<int>(); //Economy class seats assigned to user
+            List<int> fClassSeatAssign = new List<int>(); //first class seats assigned to user
+            List<int> EClassSeatAssigned = new List<int>(); //Economy class seats assigned to user
             int userclassChoice = 0; //User choice for airline menu
             char userYorN = ' '; //User choice for next selection
             bool quit = false;
@@ -38,9 +38,9 @@ namespace JH_Assign4
             {
                 Console.Clear();
                 Console.WriteLine("_____________________________________________________________");
-                Console.WriteLine("              Select (1) for First Class                     ");
-                Console.WriteLine("              Select (2) for Economy Class                   ");
-                Console.WriteLine("              Select (3) to exit the order system            ");
+                Console.WriteLine("              Enter (1) for First Class                     ");
+                Console.WriteLine("              Enter (2) for Economy Class                   ");
+                Console.WriteLine("              Enter (3) to exit the order system            ");
                 Console.WriteLine("_____________________________________________________________");
                 Console.Write("You entered: ");
                 userclassChoice = Int32.Parse(Console.ReadLine());
@@ -49,11 +49,11 @@ namespace JH_Assign4
                     case 1:
                         int seatFirstClass; //First class ~ Global Variable
 
-                        if (firstSeatsBooked.Count == 0) //if this is the first seat to be booked...
+                        if (fClassSeatAssign.Count == 0) //if this is the first seat to be booked...
                         {
-                            seatFirstClass = rand.Next(0, 5);
+                            seatFirstClass = seatPicker.Next(6, 10); 
                             seats[seatFirstClass] = true;
-                            firstSeatsBooked.Add(seatFirstClass);  //Add seat to the list of assigned user seats.                           
+                            fClassSeatAssign.Add(seatFirstClass);  //Add seat to the list of assigned user seats.                           
                         }
                         else
                         {
@@ -61,29 +61,29 @@ namespace JH_Assign4
                                //has not being assigned a seat
 
                             {
-                                seatFirstClass = rand.Next(0, 5);
-                                if (!firstSeatsBooked.Contains(seatFirstClass)) //if seatAssingF is not booked.
+                                seatFirstClass = seatPicker.Next(0, 5);
+                                if (!fClassSeatAssign.Contains(seatFirstClass)) //if seatAssingF is not booked.
                                 {
                                     seats[seatFirstClass] = true;
                                 }
                                 //Go through loop, while the random seat number is already assigned 
                                 //and there are avaialable seats
-                            } while (firstSeatsBooked.Contains(seatFirstClass) && firstSeatsBooked.Count < 5);
+                            } while (fClassSeatAssign.Contains(seatFirstClass) && fClassSeatAssign.Count < 5);
 
-                            if (firstSeatsBooked.Count < 5) //if seatsBooked list is not ful, and there are still seats left for First Class
+                            if (fClassSeatAssign.Count < 5) //if seatsBooked list is not ful, and there are still seats left for First Class
                             {
-                                firstSeatsBooked.Add(seatFirstClass); //Add current random-generated seat to the list.
+                                fClassSeatAssign.Add(seatFirstClass); //Add current random-generated seat to the list.
                             }
                         }
                         //
-                        if (firstSeatsBooked.Count >= 5)
+                        if (fClassSeatAssign.Count >= 5)
                         {
                             Console.WriteLine("All seats for First Class are booked!");
                             Console.WriteLine();
                             Console.WriteLine("_________________________________________________________________");
-                            Console.WriteLine("   If it’s acceptable to be placed in the economy-class?         ");
-                            Console.WriteLine("   Please type (y) for Economy Class                             ");
-                            Console.WriteLine("      Please type (n) to exit the order systemy                  ");
+                            Console.WriteLine("   Would you like to book a seat in Economy Class?               ");
+                            Console.WriteLine("   Enter (y) for Economy Class                                   ");
+                            Console.WriteLine("   Enter (n) to exit the order systemy                           ");
                             Console.WriteLine("_________________________________________________________________");
                             Console.Write("You entered: ");
                             userYorN = Char.Parse(Console.ReadLine());
@@ -110,50 +110,50 @@ namespace JH_Assign4
                         break;
                     case 2:
                         int seatEconClass;
-                        if (economySeatsBooked.Count == 0) //if Economy Class seat has been selected by the user
+                        if (EClassSeatAssigned.Count == 0) //if Economy Class seat has been selected by the user
                         {
-                            seatEconClass = rand.Next(5, 10);
+                            seatEconClass = seatPicker.Next(5, 10);
                             seats[seatEconClass] = true;
-                            economySeatsBooked.Add(seatEconClass);  //Add user seat to the list of taken/assigned seats.                           
+                            EClassSeatAssigned.Add(seatEconClass);  //Add user seat to the list of taken/assigned seats.                           
                         }
                         else
                         {
                             do //do-while loop if there are free seats available and selected seat has not being choosen by the user
                             {
-                                seatEconClass = rand.Next(5, 10);
-                                if (!economySeatsBooked.Contains(seatEconClass)) //if Economy Class seats haven't been sold out.
+                                seatEconClass = seatPicker.Next(5, 10);
+                                if (!EClassSeatAssigned.Contains(seatEconClass)) //if Economy Class seats haven't been sold out.
                                 {
                                     seats[seatEconClass] = true;
                                 }
                                 //repeat while the random seat number is already booked and there are  avaialable seats
-                            } while (economySeatsBooked.Contains(seatEconClass) && economySeatsBooked.Count < 5);
+                            } while (EClassSeatAssigned.Contains(seatEconClass) && EClassSeatAssigned.Count < 5);
 
-                            if (economySeatsBooked.Count < 5) //if seatsBooked <list> is not full for Economy Class
+                            if (EClassSeatAssigned.Count < 5) //if seatsBooked <list> is not full for Economy Class
                             {
-                                economySeatsBooked.Add(seatEconClass); //Add current random-generated seat to the list.
+                                EClassSeatAssigned.Add(seatEconClass); //Add current random-generated seat to the list.
                             }
                         }
-                        if (economySeatsBooked.Count >= 5)
+                        if (EClassSeatAssigned.Count >= 5)
                         {
-                            Console.WriteLine("All seats for Economy Class are booked");
+                            Console.WriteLine("Unfortunately all seats for Economy Class are booked");
                             Console.WriteLine();
                             Console.WriteLine("_________________________________________________________________");
-                            Console.WriteLine("      If it’s acceptable to be placed in the First-class?     ");
-                            Console.WriteLine("      Please type (y) for First Class                         ");
-                            Console.WriteLine("      Please type (n) to exit the order systemy               ");
+                            Console.WriteLine("      Would you like to book a seat in First Class?              ");
+                            Console.WriteLine("      Enter (y) for First Class                                  ");
+                            Console.WriteLine("      Enter (n) to exit the order systemy                        ");
                             Console.WriteLine("_________________________________________________________________");
-                            Console.Write("You entered: ");
+                            Console.Write("You entered: "); //Added write instead aof using writeline, in order to create a realistic 
+                                                            // user interaction
                             userYorN = Char.Parse(Console.ReadLine());
-                            if (userYorN == 'y')
+                            if (userYorN == 'y') //if user chooses y ~ show:
                             {
-                                Console.WriteLine("Press enter to continue...");
+                                Console.WriteLine("Press enter to continue..."); //press any key to continue
                             }
                             else
                             {
                                 Console.WriteLine();
                                 Console.WriteLine("_________________________________________________________________");
-                                Console.WriteLine("              Next flight leaves in 3 hours.                     ");
-                                Console.WriteLine("              Press enter to continue...                         ");
+                                Console.WriteLine("              Next flight leaves in 3 hours!                     ");
                                 Console.WriteLine("_________________________________________________________________");
 
                             }
@@ -177,15 +177,15 @@ namespace JH_Assign4
                 }
             }
 
-            waitForAnyKey();
+            WaitForAnyKey();
         }
-
-        private static void waitForAnyKey()
+        private static void WaitForAnyKey()
         {
             Console.WriteLine();
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
-            Console.Clear();
+            Console.Clear(); //Clears the console, allows user to think and press a key  
+                                //when the user chooses to
 
         }
     }
