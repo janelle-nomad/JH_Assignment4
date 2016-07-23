@@ -9,7 +9,8 @@ using System.Threading.Tasks;
            300839820   
            Date Created: 2016-07-10
            Date Modified: 2016-07-22  
-           version 0.0.4 - Created a new repo -- due to sync github error 
+           Version 4.5: added proper user interaction 
+           prompt messages, to create a more fluid user experience
     */
 namespace JH_Assign4
 {
