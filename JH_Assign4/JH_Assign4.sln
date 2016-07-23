@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirlineRes", "JH_Assign4\AirlineRes.csproj", "{6567E3D1-94E2-4A9E-9829-011D53F0883D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "diceRoll", "diceRoll\diceRoll.csproj", "{39BE25C2-95BD-4602-82F4-3B71AF9943DE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6567E3D1-94E2-4A9E-9829-011D53F0883D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6567E3D1-94E2-4A9E-9829-011D53F0883D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6567E3D1-94E2-4A9E-9829-011D53F0883D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6567E3D1-94E2-4A9E-9829-011D53F0883D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39BE25C2-95BD-4602-82F4-3B71AF9943DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39BE25C2-95BD-4602-82F4-3B71AF9943DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39BE25C2-95BD-4602-82F4-3B71AF9943DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39BE25C2-95BD-4602-82F4-3B71AF9943DE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
